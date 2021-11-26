@@ -1,8 +1,7 @@
-
-
 import 'package:poke_cards/models/ability.dart';
 import 'package:poke_cards/models/move.dart';
 import 'package:poke_cards/models/stat.dart';
+import 'package:poke_cards/models/type.dart';
 
 class Pokemon {
   Pokemon({
@@ -24,14 +23,19 @@ class Pokemon {
   final List<Type> types;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) {
+    var abilities = json['abilities'] as List;
+    var moves = json['moves'] as List;
+    var stats = json['stats'] as List;
+    var types = json['types'] as List;
+
     return Pokemon(
       name: json['name'],
       height: json['height'],
       weight: json['weight'],
-      abilities: json['abilities'],
-      moves: json['moves'],
-      stats: json['stats'],
-      types: json['types'],
+      abilities: abilities.map((object) => Ability.fromJson(object)).toList(),
+      moves: moves.map((object) => Move.fromJson(object)).toList(),
+      types: types.map((object) => Type.fromJson(object)).toList(),
+      stats: stats.map((object) => Stat.fromJson(object)).toList()
     );
   }
 }

@@ -7,7 +7,7 @@ class Move {
 
   factory Move.fromJson(Map<String, dynamic> json) {
     return Move(
-        move: Details.fromJson(json)
+        move: Details.fromJson(json['move'])
     );
   }
 }

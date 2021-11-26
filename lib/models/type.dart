@@ -7,7 +7,7 @@ class Type {
 
   factory Type.fromJson(Map<String, dynamic> json) {
     return Type(
-        type: Details.fromJson(json)
+        type: Details.fromJson(json['type'])
     );
   }
 }

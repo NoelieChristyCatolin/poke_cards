@@ -8,7 +8,7 @@ class Stat {
 
   factory Stat.fromJson(Map<String, dynamic> json) {
     return Stat(
-        stat: Details.fromJson(json),
+        stat: Details.fromJson(json['stat']),
         baseStat: json['base_stat'],
     );
   }

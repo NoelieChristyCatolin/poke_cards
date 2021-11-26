@@ -7,7 +7,7 @@ class Ability {
 
   factory Ability.fromJson(Map<String, dynamic> json) {
     return Ability(
-      ability: Details.fromJson(json)
+      ability: Details.fromJson(json['ability'])
     );
   }
 }
