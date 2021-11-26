@@ -17,7 +17,7 @@ class _CarListScreenState extends State<CarListScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<CardListCubit>().fetchPokemonDetails('pikachu');
+
     context.read<CardListCubit>().fetchPokemons();
   }
 
@@ -26,11 +26,13 @@ class _CarListScreenState extends State<CarListScreen> {
     return BlocBuilder<CardListCubit, CardListState>(builder: (context, state) => Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(title: const Text('PokeCard'),),
-      body: Container(
+      body: PageView.builder(
+        itemCount:state.pokemons!.results.length,
+        itemBuilder: (context, index) => Container(
         margin: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.all(Radius.circular(30))
+            color: Colors.grey,
+            borderRadius: BorderRadius.all(Radius.circular(30))
         ),
         child: Column(
           children: [
@@ -58,6 +60,10 @@ class _CarListScreenState extends State<CarListScreen> {
           ],
         ),
       ),
+        onPageChanged: (value){
+          context.read<CardListCubit>().fetchPokemonDetails(state.pokemons!.results[value].name);
+        },
+       )
     ));
   }
 
