@@ -18,6 +18,7 @@ class _CarListScreenState extends State<CarListScreen> {
   void initState() {
     super.initState();
     context.read<CardListCubit>().fetchPokemonDetails('pikachu');
+    context.read<CardListCubit>().fetchPokemons();
   }
 
   @override
@@ -52,6 +53,7 @@ class _CarListScreenState extends State<CarListScreen> {
               ),
             ),
             Text(composedAbilities(state.pokemon?.abilities ?? [],), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.deepPurple),),
+            // print(state.pokemon?.moves.length)
             MovesWidget(moves: state.pokemon?.moves ?? [])
           ],
         ),

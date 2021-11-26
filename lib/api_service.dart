@@ -10,4 +10,14 @@ class ApiServices {
       throw Exception('Failed to fetch');
     }
   }
+
+  Future<Response> fetchPokemons() async{
+    try{
+      var response = await Dio().get('https://pokeapi.co/api/v2/pokemon/');
+      return response;
+    }
+    catch(e) {
+      throw Exception('Failed to fetch');
+    }
+  }
 }
