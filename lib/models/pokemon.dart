@@ -5,6 +5,7 @@ import 'package:poke_cards/models/type.dart';
 
 class Pokemon {
   Pokemon({
+    required this.id,
     required this.name,
     required this.height,
     required this.weight,
@@ -14,6 +15,7 @@ class Pokemon {
     required this.types,
   });
 
+  final int id;
   final String name;
   final int height;
   final int weight;
@@ -29,6 +31,7 @@ class Pokemon {
     var types = json['types'] as List;
 
     return Pokemon(
+      id: json['id'],
       name: json['name'],
       height: json['height'],
       weight: json['weight'],
